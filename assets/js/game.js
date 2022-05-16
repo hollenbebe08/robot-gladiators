@@ -7,9 +7,9 @@ var enemyNames = ["Roborto", "Amy Andriod", "Robo Trumble"];
 var enemyHealth= 50;
 var enemyAttack= 12;
 
-console.log(enemyNames);
-console.log(enemyNames[0]);
-console.log(enemyNames[2]);
+// console.log(enemyNames);
+// console.log(enemyNames[0]);
+// console.log(enemyNames[2]);
 
 //created fight function and this is an example of a function expression
 var fight= function(enemyName) {
@@ -29,46 +29,50 @@ var fight= function(enemyName) {
                 playerMoney= playerMoney - 10;
                 console.log("playerMoney", playerMoney);
                 break;
-
-            //if no (false), ask question again by running fight() again
-            } else {
-                fight();
             }
         }
         
         //if player chooses to fight, then fight
-        if (promptFight === "fight" || promptFight === "FIGHT") {
-            //remove enemy's health by subtracting the amount set in the playerAttack variable
-            enemyHealth = enemyHealth - playerAttack;
-            console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
-        }
+        // if (promptFight === "fight" || promptFight === "FIGHT") {
+        
+        // remove enemy's health by subtracting the amount set in the playerAttack variable
+        enemyHealth = enemyHealth - playerAttack;
+            console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+        );
 
         //check my enemy's health
         if (enemyHealth <= 0) {
             window.alert(enemyName + " has died!");
-            break;
+
+            // award player money for winning
+            playerMoney = playerMoney + 20;
+
+          //leave while() loop since enemy is dead 
+          break; 
         } else { 
-                window.alert(enemyName + " still has " + enemyHealth + " health left.");
+            window.alert(enemyName + " still has " + enemyHealth + " health left.");
         }  
             
         //remove player's health by subtracting the amount set in the enemyAttack variable
         playerHealth= playerHealth - enemyAttack;
-        console.log( enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+        console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+        );
         
         //check player's health
         if(playerHealth <= 0) {
-            window.alert(playerName + " has died!");
-            break;
+            window.alert(playerName + " has died!")
+          //leave while loop if player is dead
+          break; 
         } else {
             window.alert(playerName + " still has " + playerHealth + " health left.");
         }
 
         //if player did not choose 1 or 2 prompt
-        // else {
-        //    window.alert("You need to choose a valid option. Try again!");
-        // }
-    }
-}; //end of fight function
+    //     else {
+    //        window.alert("You need to choose a valid option. Try again!");
+    //         }
+    } //end of while loop
+};//end of fight function
 
 //function to start game and the loop function
 var startGame = function() {
@@ -116,4 +120,4 @@ var endGame= function() {
 }
 
 // call  start game function - start the game when the page loads
-startGame();
+startGame()
